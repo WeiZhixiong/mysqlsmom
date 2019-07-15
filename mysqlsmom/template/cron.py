@@ -23,6 +23,8 @@ BULK_SIZE = 1
 
 # 修改elasticsearch节点
 NODES = [{"host": "127.0.0.1", "port": 9200}]
+#ES_USER = "user"
+#ES_PASS = "password"
 
 TASKS = [
     {
@@ -41,7 +43,7 @@ TASKS = [
                     "es": {
                         "action": "upsert",
                         "index": "test_index",   # 设置 index
-                        "type": "test"          # 设置 type
+                        "type": "_doc"          # 设置 type
                     }
                 }
             }

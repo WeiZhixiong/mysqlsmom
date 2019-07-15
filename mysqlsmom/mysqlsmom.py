@@ -410,7 +410,13 @@ def run(config):
         custom_rowfilters = importlib.import_module(filename[:-3])
 
     global es
-    es = Elasticsearch(config_.NODES)
+    try:
+        es_user = config_.ES_USER
+        es_pass = config_.ES_PASS
+        es = Elasticsearch(config_.NODES, http_auth=(es_user, es_pass))
+    except Exception as e:
+        logging.error(e)
+        es = Elasticsearch(config_.NODES)
 
     if config_.STREAM == "INIT":
         handle_init_stream(config_)

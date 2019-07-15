@@ -22,8 +22,9 @@ REDIS = {
     "password": "password",  # 不需要密码则注释或删掉该行
 }
 
-
 NODES = [{"host": "127.0.0.1", "port": 9200}]
+#ES_USER = "user"
+#ES_PASS = "password"
 
 TASKS = [
     {
@@ -42,7 +43,7 @@ TASKS = [
                     "es": {
                         "action": "upsert",
                         "index": "test_index",
-                        "type": "test",
+                        "type": "_doc",
                         "nodes": NODES
                     }
                 }
